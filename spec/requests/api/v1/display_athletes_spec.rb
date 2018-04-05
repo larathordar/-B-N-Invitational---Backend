@@ -1,3 +1,4 @@
+require 'rails_helper'
 
 RSpec.describe Api::V1::AthletesController, type: :request do
   describe 'GET /api/v1/athletes' do

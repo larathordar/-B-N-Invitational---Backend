@@ -10,10 +10,12 @@ class Api::V1::AthletesController < ApplicationController
 
   def update
     render json: { status: 'Thank you for casting your vote!' } if @result.updated_votes(params)
+    @athlete.image.attach(params[:athlete][:image]) if params[:athlete][:image]
   end
 
   def create
     athlete = Athlete.new(athlete_params)
+    @athlete.image.attach(params[:athlete][:image])
     if athlete.save
       Result.create(athlete: athlete)
       render_message('Athlete successfully created!')
